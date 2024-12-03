@@ -1,20 +1,16 @@
 from sys import argv
 
 def validate_line(line: list) -> bool:
-    if line[0] < line[-1]:
-        # asc
-        for i in range(1,len(line)):
-            if line[i] - line[i-1] not in (1,2,3):
-                return False
-        else:
-            return True
-    if line[0] > line[-1]:
-        # desc
-        for i in range(1,len(line)):
-            if line[i] - line[i-1] not in (-1,-2,-3):
-                return False
-        else:
-            return True
+    
+     # if this list is descending, flip it
+    if line[0] >= line[-1]:
+        line = line[::-1]
+    
+    for i in range(len(line)-1):
+        if line[i+1] - line[i] not in (1,2,3):
+            return False
+    
+    return True
         
 assert validate_line([1,3,5])
 assert not validate_line([1,3,8])
@@ -31,9 +27,9 @@ def part1(lines):
     return valid
 
 assert part1([
-    [7, 6, 4, 2, 1], # valid
-    [1, 3, 2, 4, 5], # invalid
-    [1, 3, 6, 7, 9]  # valid
+    [7,6,4,2,1], # valid
+    [1,3,2,4,5], # invalid
+    [1,3,6,7,9]  # valid
 ]) == 2
 
 def part2(lines):
@@ -48,9 +44,9 @@ def part2(lines):
     return valid
 
 assert part2([
-    [7, 6, 4, 2, 1], # valid
-    [1, 3, 2, 4, 5], # valid
-    [1, 3, 6, 7, 9]  # valid
+    [7,6,4,2,1], # valid
+    [1,3,2,4,5], # valid
+    [1,3,6,7,9]  # valid
 ]) == 3
 
 if __name__ == "__main__":
