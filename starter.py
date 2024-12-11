@@ -16,8 +16,7 @@ if __name__ == "__main__":
             INPUTFILE = "sample_input.txt"
 
     with open(INPUTFILE) as ifile:
-        lines = ifile.readlines()
-        line = ifile.read()
+        lines = ifile.read().splitlines()
 
     print(f"Part 1: {part1(lines)}")
     print(f"Part 2: {part2(lines)}")
