@@ -1,5 +1,7 @@
 # This is the boilerplate I usually start with
 from sys import argv
+from dataclasses import dataclass
+from typing import List, Dict, Set, Tuple, Any
 
 def part1(lines):
     pass
